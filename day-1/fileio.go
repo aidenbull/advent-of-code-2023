@@ -1,6 +1,6 @@
-package fileio
+package main
 
-include (
+import (
 	"os"
 	"io"
 )
