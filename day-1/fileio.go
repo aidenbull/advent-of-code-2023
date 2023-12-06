@@ -14,14 +14,14 @@ func OpenFile(filepath string) *os.File {
 }
 
 func ReadFile(file *os.File) string {
-	out := make([]byte, 1024) //Not sure what good start size should be
+	out := make([]byte, 1024) // Not sure what good start size should be
 	data := make([]byte, 100) 
 	for {
-		_, readErr := file.Read(data)
+		numRead, readErr := file.Read(data)
 		if readErr == io.EOF{
 			break
 		}
-		out = append(out, data...)
+		out = append(out, data[0:numRead]...) // Only append up to the number of bytes read for the last copy
 	}
 	return string(out)
 }
