@@ -14,7 +14,7 @@ func OpenFile(filepath string) *os.File {
 }
 
 func ReadFile(file *os.File) string {
-	out := make([]byte, 1024) // Not sure what good start size should be
+	out := make([]byte, 0)
 	data := make([]byte, 100) 
 	for {
 		numRead, readErr := file.Read(data)
