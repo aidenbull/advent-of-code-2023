@@ -36,5 +36,5 @@ func PrintPartOneSolution(tokens []string) {
 		}
 		sum += val_1 * 10 + val_2
 	}
-	fmt.Println(sum)
+	fmt.Println("Solution for part 1:", sum)
 }
