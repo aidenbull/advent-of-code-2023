@@ -8,4 +8,5 @@ func main() {
 	file := fileio.OpenFile("input")
 	fileString := fileio.ReadFile(file)
 	PrintPartOneSolution(fileString)
+	PrintPartTwoSolution(fileString)
 }
