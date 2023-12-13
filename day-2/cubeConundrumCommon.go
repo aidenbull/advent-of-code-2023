@@ -65,7 +65,7 @@ func processGameNum(gameInput string) int {
 	gameNumStr := firstNumMatch.FindString(gameInput)
 	gameNum, err := strconv.Atoi(gameNumStr)
 	if err != nil {
-		panic("Oh it's happening! Oh my god it's happening! Everybody STAY FUCKING CALM!")
+		panic("Oh my god! Okay it's happening! Everybody stay calm. Stay calm. STAY FUCKING CALM!")
 	}
 	return gameNum
 }
