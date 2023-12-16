@@ -40,3 +40,28 @@ func TestFindIndexOfFirstDigitInRuneSlice(t *testing.T) {
 		t.Errorf("Expected %d, got %d", expected, result)
 	}
 }
+
+func TestFindIndexOfFirstDigitFailsIfNoDigitsPresent(t *testing.T) {
+	testInput := []rune{'.','&','$','-'}
+	expected := -1
+	result := FindFirstDigit(testInput)
+
+	//Noticing a bit of duplication here. Might be worth investigating
+	if expected != result {
+		t.Errorf("Expected %d, got %d", expected, result)
+	}
+}
+
+func TestRuneIsAdjacentToSymbolWhenNotAdjacent(t *testing.T) {
+	testInput := [][]rune{
+		{'.', '.', '.', '&'},
+		{'.', '6', '5', '.'},
+		{'.', '.', '.', '.'},
+	}
+	expected := false
+	result := AdjacentToSymbol(testInput, 1, 1)
+
+	if expected != result {
+		t.Errorf("Expected %d, got %d", expected, result)
+	}
+}
