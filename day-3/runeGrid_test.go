@@ -9,7 +9,7 @@ func TestConvertSingleRuneToNumeral(t *testing.T) {
 	expectedResult, expectedError := 3, error(nil)
 	result, err := ConvertRuneToInteger(testInput)
 	if (result != expectedResult) || (err != expectedError) {
-		t.Errorf("Expected (%d, %d), got (%d, %d)", expectedResult, expectedError, result, err)
+		t.Errorf("Expected (%v, %v), got (%v, %v)", expectedResult, expectedError, result, err)
 	}
 }
 
@@ -17,7 +17,7 @@ func TestConvertingNonDigitRuneToNumeralFails(t *testing.T) {
 	const testInput rune = 'a'
 	_, err := ConvertRuneToInteger(testInput)
 	if err == nil  { //Having difficulty with finding a way to effectively compare results
-		t.Errorf("Expected non-nil error, got %d", err)
+		t.Errorf("Expected non-nil error, got %v", err)
 	}
 }
 
@@ -27,7 +27,7 @@ func TestConvertRunesToInteger(t *testing.T) {
 	result, _ := ConvertRunesToInteger(testInput)
 
 	if expected != result {
-		t.Errorf("Expected %d, got %d", expected, result)
+		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
 
@@ -37,7 +37,7 @@ func TestFindIndexOfFirstDigitInRuneSlice(t *testing.T) {
 	result := FindFirstDigit(testInput)
 
 	if expected != result {
-		t.Errorf("Expected %d, got %d", expected, result)
+		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
 
@@ -48,7 +48,7 @@ func TestFindIndexOfFirstDigitFailsIfNoDigitsPresent(t *testing.T) {
 
 	//Noticing a bit of duplication here. Might be worth investigating
 	if expected != result {
-		t.Errorf("Expected %d, got %d", expected, result)
+		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
 
@@ -62,6 +62,6 @@ func TestRuneIsAdjacentToSymbolWhenNotAdjacent(t *testing.T) {
 	result := AdjacentToSymbol(testInput, 1, 1)
 
 	if expected != result {
-		t.Errorf("Expected %d, got %d", expected, result)
+		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
