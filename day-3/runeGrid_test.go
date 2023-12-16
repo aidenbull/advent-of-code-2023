@@ -31,7 +31,7 @@ func TestConvertRunesToInteger(t *testing.T) {
 	}
 }
 
-func TestFindIndexOfFirstDigitInRuneString(t *testing.T) {
+func TestFindIndexOfFirstDigitInRuneSlice(t *testing.T) {
 	testInput := []rune{'.', '.', '0'}
 	expected := 2
 	result := FindFirstDigit(testInput)
