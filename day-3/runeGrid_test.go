@@ -30,3 +30,13 @@ func TestConvertRunesToInteger(t *testing.T) {
 		t.Errorf("Expected %d, got %d", expected, result)
 	}
 }
+
+func TestFindIndexOfFirstDigitInRuneString(t *testing.T) {
+	testInput := []rune{'.', '.', '0'}
+	expected := 2
+	result := FindFirstDigit(testInput)
+
+	if expected != result {
+		t.Errorf("Expected %d, got %d", expected, result)
+	}
+}
