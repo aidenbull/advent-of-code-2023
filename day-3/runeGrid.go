@@ -20,7 +20,25 @@ func ConvertRuneToInteger(r rune) (int, error) {
 	return int(r - '0'), nil
 }
 
-func ConvertRunesToInteger(runes []rune) (int, error) {
+//Does not support negative powers
+func intPow(x, y int) int {
+	total := 1
+	for i := 0; i<y; i++ {
+		total *= x
+	}
+	return total
+}
 
-	return 0, nil
+//Assumes base10 number (at least for the moment)
+func ConvertRunesToInteger(runes []rune) (int, error) {
+	result := 0
+	for i, r := range runes {
+		out, err := ConvertRuneToInteger(r)
+		if (err != nil) {
+			return 0, err
+		}
+		result += out * intPow(10, len(runes) - (i + 1))
+	}
+
+	return result, nil
 }
