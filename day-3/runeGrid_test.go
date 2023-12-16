@@ -52,7 +52,7 @@ func TestFindIndexOfFirstDigitFailsIfNoDigitsPresent(t *testing.T) {
 	}
 }
 
-func TestRuneIsAdjacentToSymbolWhenNotAdjacent(t *testing.T) {
+func TestRuneIsAdjacentToSymbolReturnsFalseWhenNotAdjacent(t *testing.T) {
 	testInput := [][]rune{
 		{'.', '.', '.', '&'},
 		{'.', '6', '5', '.'},
@@ -60,6 +60,34 @@ func TestRuneIsAdjacentToSymbolWhenNotAdjacent(t *testing.T) {
 	}
 	expected := false
 	result := AdjacentToSymbol(testInput, 1, 1)
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
+
+func TestRuneIsAdjacentToSymbolReturnsTrueWhenIsAdjacent(t *testing.T) {
+	testInput := [][]rune{
+		{'.', '.', '.', '&'},
+		{'.', '6', '5', '.'},
+		{'.', '.', '.', '.'},
+	}
+	expected := true
+	result := AdjacentToSymbol(testInput, 1, 2)
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
+
+func TestRuneIsAdjacentToSymbolIgnoresTheSymbolUnderTest(t *testing.T) {
+	testInput := [][]rune{
+		{'.', '.', '.', '&'},
+		{'.', '6', '5', '.'},
+		{'.', '.', '.', '.'},
+	}
+	expected := false
+	result := AdjacentToSymbol(testInput, 0, 3)
 
 	if expected != result {
 		t.Errorf("Expected %v, got %v", expected, result)
