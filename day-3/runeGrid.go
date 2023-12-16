@@ -53,3 +53,33 @@ func FindFirstDigit(runes []rune) int {
 	}
 	return -1
 }
+
+func isNotableSymbol(r rune) bool {
+	return r != '.' && !unicode.IsDigit(r)
+}
+
+func AdjacentToSymbol(runeGrid [][]rune, y, x int) bool {
+	yBorder := []int{-1, 0, 1}
+	xBorder := []int{-1, 0, 1}
+	foundSymbol := false
+	for _, j := range yBorder {
+		for _, i := range xBorder {
+			//Ignore the symbol being checked
+			if i == 0 && j == 0 {
+				continue
+			}
+			currY := y + j
+			currX := x + i
+			//Ignore the symbol if the current y coord is outside of the slice range
+			if currY < 0 || currY >= len(runeGrid) {
+				continue
+			}
+			//Same for x (need to do this second because accessing an index)
+			if currX < 0 || currX >= len(runeGrid[currY]) {
+				continue
+			}
+			foundSymbol = foundSymbol || isNotableSymbol(runeGrid[currY][currX])
+		}
+	}
+	return foundSymbol
+}
