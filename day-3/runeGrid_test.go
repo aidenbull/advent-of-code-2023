@@ -98,7 +98,7 @@ func TestRuneIsAdjacentToSymbolIgnoresTheSymbolUnderTest(t *testing.T) {
 func TestGetNumberIndicesFromRuneSlice(t *testing.T) {
 	testInput := []rune{'.','1','3','*','a','6','2','1','.','.'}
 	expected := []SliceCoords{{1,3}, {5, 8}}
-	result := GetNumberIndicesFromRuneSlice(testInput)
+	result := GetNumberCoordsFromRuneSlice(testInput)
 
 	if !reflect.DeepEqual(expected, result) {
 		t.Errorf("Expected %+v, got %+v", expected, result)

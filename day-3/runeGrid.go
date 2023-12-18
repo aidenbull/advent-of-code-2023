@@ -2,6 +2,7 @@ package main
 
 import (
 	"unicode"
+	"strings"
 )
 
 type BadConversion struct {
@@ -89,7 +90,7 @@ type SliceCoords struct {
 	end int
 }
 
-func GetNumberIndicesFromRuneSlice(runes []rune) []SliceCoords {
+func GetNumberCoordsFromRuneSlice(runes []rune) []SliceCoords {
 	out := make([]SliceCoords, 0)
 	currStartIndex := 0
 	readingNumber := false
@@ -108,6 +109,15 @@ func GetNumberIndicesFromRuneSlice(runes []rune) []SliceCoords {
 	}
 	if readingNumber {
 		out = append(out, SliceCoords{currStartIndex, len(runes)})
+	}
+	return out
+}
+
+func ConvertStringToRuneGrid(input string) [][]rune {
+	out := make([][]rune, 0)
+	lines := strings.Split(input, "\n")
+	for _, str := range lines {
+		out = append(out, []rune(str))
 	}
 	return out
 }
