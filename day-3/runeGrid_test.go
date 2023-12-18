@@ -2,6 +2,7 @@ package main
 
 import (
 	"testing"
+	"reflect"
 )
 
 func TestConvertSingleRuneToNumeral(t *testing.T) {
@@ -91,5 +92,15 @@ func TestRuneIsAdjacentToSymbolIgnoresTheSymbolUnderTest(t *testing.T) {
 
 	if expected != result {
 		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
+
+func TestGetNumberIndicesFromRuneSlice(t *testing.T) {
+	testInput := []rune{'.','1','3','*','a','6','2','1','.','.'}
+	expected := []SliceCoords{{1,3}, {5, 8}}
+	result := GetNumberIndicesFromRuneSlice(testInput)
+
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
