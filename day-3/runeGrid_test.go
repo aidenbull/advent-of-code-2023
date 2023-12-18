@@ -95,6 +95,34 @@ func TestRuneIsAdjacentToSymbolIgnoresTheSymbolUnderTest(t *testing.T) {
 	}
 }
 
+func TestNumberIsAdjacentToSymbolWhenAdjacent(t *testing.T) {
+	testInput := [][]rune{
+		{'.', '.', '.', '&'},
+		{'.', '6', '5', '.'},
+		{'.', '.', '.', '.'},
+	}
+	expected := true
+	result := NumberIsAdjacentToSymbol(testInput, 1, 1, 3)
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
+
+func TestNumberIsAdjacentToSymbolWhenNotAdjacent(t *testing.T) {
+	testInput := [][]rune{
+		{'.', '.', '.', '.'},
+		{'.', '6', '5', '.'},
+		{'.', '.', '.', '.'},
+	}
+	expected := false
+	result := NumberIsAdjacentToSymbol(testInput, 1, 1, 3)
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
+
 func TestGetNumberIndicesFromRuneSlice(t *testing.T) {
 	testInput := []rune{'.','1','3','*','a','6','2','1','.','.'}
 	expected := []SliceCoords{{1,3}, {5, 8}}

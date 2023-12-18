@@ -85,9 +85,17 @@ func AdjacentToSymbol(runeGrid [][]rune, y, x int) bool {
 	return foundSymbol
 }
 
+func NumberIsAdjacentToSymbol(runeGrid [][]rune, lineIndex, xStart, xEnd int) bool {
+	out := false
+	for i := xStart; i < xEnd; i++ {
+		out = AdjacentToSymbol(runeGrid, lineIndex, i) || out
+	}
+	return out
+}
+
 type SliceCoords struct {
-	start int
-	end int
+	Start int
+	End int
 }
 
 func GetNumberCoordsFromRuneSlice(runes []rune) []SliceCoords {

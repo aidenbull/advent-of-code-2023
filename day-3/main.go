@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
+	"strings"
 )
 
 func main() {
 	filestr, _ := ioutil.ReadFile("input")
-	fmt.Println(string(filestr))
+	preProcessedInput := strings.TrimSpace(string(filestr))
+	PrintPartOneSolution(preProcessedInput)
 }
