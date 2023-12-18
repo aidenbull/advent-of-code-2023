@@ -83,3 +83,31 @@ func AdjacentToSymbol(runeGrid [][]rune, y, x int) bool {
 	}
 	return foundSymbol
 }
+
+type SliceCoords struct {
+	start int
+	end int
+}
+
+func GetNumberIndicesFromRuneSlice(runes []rune) []SliceCoords {
+	out := make([]SliceCoords, 0)
+	currStartIndex := 0
+	readingNumber := false
+	for i, r := range runes {
+		if (unicode.IsDigit(r)) {
+			if !readingNumber {
+				currStartIndex = i
+				readingNumber = true
+			}
+		} else {
+			if readingNumber {
+				out = append(out, SliceCoords{currStartIndex, i})
+				readingNumber = false
+			}
+		}
+	}
+	if readingNumber {
+		out = append(out, SliceCoords{currStartIndex, len(runes)})
+	}
+	return out
+}
