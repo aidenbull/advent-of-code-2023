@@ -44,17 +44,6 @@ func ConvertRunesToInteger(runes []rune) (int, error) {
 	return result, nil
 }
 
-//Returns -1 if it fails. Not sure if this is best practice, just following the
-// pattern from strings.Index()
-func FindFirstDigit(runes []rune) int {
-	for i, r := range runes {
-		if unicode.IsDigit(r) {
-			return i
-		}
-	}
-	return -1
-}
-
 func isNotableSymbol(r rune) bool {
 	return r != '.' && !unicode.IsDigit(r)
 }

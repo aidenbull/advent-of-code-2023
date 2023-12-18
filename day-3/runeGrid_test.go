@@ -32,27 +32,6 @@ func TestConvertRunesToInteger(t *testing.T) {
 	}
 }
 
-func TestFindIndexOfFirstDigitInRuneSlice(t *testing.T) {
-	testInput := []rune{'.', '.', '0'}
-	expected := 2
-	result := FindFirstDigit(testInput)
-
-	if expected != result {
-		t.Errorf("Expected %v, got %v", expected, result)
-	}
-}
-
-func TestFindIndexOfFirstDigitFailsIfNoDigitsPresent(t *testing.T) {
-	testInput := []rune{'.','&','$','-'}
-	expected := -1
-	result := FindFirstDigit(testInput)
-
-	//Noticing a bit of duplication here. Might be worth investigating
-	if expected != result {
-		t.Errorf("Expected %v, got %v", expected, result)
-	}
-}
-
 func TestRuneIsAdjacentToSymbolReturnsFalseWhenNotAdjacent(t *testing.T) {
 	testInput := [][]rune{
 		{'.', '.', '.', '&'},
