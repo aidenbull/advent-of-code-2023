@@ -104,3 +104,16 @@ func TestGetNumberIndicesFromRuneSlice(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestConvertStringToRuneGrid (t *testing.T) {
+	testInput := "Hello.\nIt'sme"
+	expected := [][]rune{
+		{'H','e','l','l','o','.'},
+		{'I','t','\'','s','m','e'},
+	}
+	result := ConvertStringToRuneGrid(testInput)
+
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
