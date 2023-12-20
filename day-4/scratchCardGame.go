@@ -46,7 +46,7 @@ func intPow(x, y int) int {
 	return total
 }
 
-func EvaluateGame(game ScratchGame) int {
+func EvaluateGameMatches(game ScratchGame) int {
 	numMatches := 0
 
 	for _, winningNum := range game.WinningNums {
@@ -58,6 +58,10 @@ func EvaluateGame(game ScratchGame) int {
 		}
 	}
 
+	return numMatches
+}
+
+func CalculateValue(numMatches int) int {
 	if numMatches == 0 {
 		return 0
 	}
