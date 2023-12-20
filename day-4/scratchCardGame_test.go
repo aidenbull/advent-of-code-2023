@@ -26,3 +26,14 @@ func TestEvaluateGameValueWithValueZero(t *testing.T) {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
+
+func TestEvaluateGameValueWithValueZero(t *testing.T) {
+	testInput := ScratchGame{[]int{1, 2, 3}, []int{3, 6, 7, 1}}
+
+	expected := 2
+	result := EvaluateGame(testInput)
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
