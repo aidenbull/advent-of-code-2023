@@ -21,8 +21,9 @@ func ScratchGameFromString(input string) ScratchGame {
 	gameComponents := strings.Split(game, "|")
 	
 	//Get tokens from components
-	winningNumsStrings := strings.Split(strings.TrimSpace(gameComponents[0]), " ")
-	yourNumsStrings := strings.Split(strings.TrimSpace(gameComponents[1]), " ")
+	matchSpaces := regexp.MustCompile(`\s+`)
+	winningNumsStrings := matchSpaces.Split(strings.TrimSpace(gameComponents[0]), -1)
+	yourNumsStrings := matchSpaces.Split(strings.TrimSpace(gameComponents[1]), -1)
 
 	var out ScratchGame
 	for _, numStr := range winningNumsStrings {
