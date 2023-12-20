@@ -27,7 +27,7 @@ func TestEvaluateGameValueWithValueZero(t *testing.T) {
 	}
 }
 
-func TestEvaluateGameValueWithValueZero(t *testing.T) {
+func TestEvaluateGameValueWithPositiveValue(t *testing.T) {
 	testInput := ScratchGame{[]int{1, 2, 3}, []int{3, 6, 7, 1}}
 
 	expected := 2
