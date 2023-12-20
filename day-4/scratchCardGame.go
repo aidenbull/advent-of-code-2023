@@ -4,7 +4,6 @@ import (
 	"regexp"
 	"strings"
 	"strconv"
-	"fmt"
 )
 
 type ScratchGame struct {
@@ -36,4 +35,31 @@ func ScratchGameFromString(input string) ScratchGame {
 	}
 
 	return out
+}
+
+func intPow(x, y int) int {
+	total := 1
+	for i := 0; i < y; i++ {
+		total *= x
+	}
+	return total
+}
+
+func EvaluateGame(game ScratchGame) int {
+	numMatches := 0
+
+	for _, winningNum := range game.WinningNums {
+		for _, yourNum := range game.YourNums {
+			if winningNum == yourNum {
+				numMatches++
+				break
+			}
+		}
+	}
+
+	if numMatches == 0 {
+		return 0
+	}
+
+	return intPow(2, numMatches - 1)
 }
