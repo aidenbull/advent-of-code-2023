@@ -9,4 +9,5 @@ func main() {
 	filestr, _ := ioutil.ReadFile("input")
 	preProcessedInput := strings.TrimSpace(string(filestr))
 	PrintPartOneSolution(preProcessedInput)
+	PrintPartTwoSolution(preProcessedInput)
 }
