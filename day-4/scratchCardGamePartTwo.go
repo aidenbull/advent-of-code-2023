@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strings"
+	"fmt"
 )
 
 type ActiveDuplication struct {
@@ -46,4 +48,15 @@ func CalculatePartTwo(games []ScratchGame) int {
 	}
 	
 	return sum
+}
+
+func PrintPartTwoSolution(input string) {
+	tokens := strings.Split(input, "\n")
+	
+	games := make([]ScratchGame, 0)
+	for _, gameStr := range tokens {
+		games = append(games, ScratchGameFromString(gameStr))
+	}
+
+	fmt.Println(CalculatePartTwo(games))
 }
