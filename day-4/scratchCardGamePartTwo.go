@@ -23,7 +23,6 @@ func CalculatePartTwo(games []ScratchGame) int {
 	activeDuplications := make([]ActiveDuplication, 0) 
 
 	for _, game := range games {
-		//There is always at least 1 card (the original) in each game
 		currentMultiples := calculateCurrentNumberOfCards(activeDuplications)
 
 		//Determine number of cards at this stage, and update the active duplications
