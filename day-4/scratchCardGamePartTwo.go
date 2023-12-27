@@ -10,14 +10,14 @@ type ActiveDuplication struct {
 	NumberOfDuplicates int
 }
 
-func calculateCurrentNumberOfCards(activeDuplications []ActiveDuplication) int {
-	currentMultiples := 1
+func calculateNumberOfCardsAtThisStep(activeDuplications []ActiveDuplication) int {
+	numCardsAtThisStep := 1
 
 	for _, duplication := range activeDuplications {
-		currentMultiples += duplication.NumberOfDuplicates
+		numCardsAtThisStep += duplication.NumberOfDuplicates
 	}
 
-	return currentMultiples
+	return numCardsAtThisStep
 }
 
 func decrementAndRemoveActiveDuplications(activeDuplications []ActiveDuplication) []ActiveDuplication {
@@ -36,14 +36,14 @@ func CalculatePartTwo(games []ScratchGame) int {
 	activeDuplications := make([]ActiveDuplication, 0) 
 
 	for _, game := range games {
-		currentMultiples := calculateCurrentNumberOfCards(activeDuplications)
-		sum += currentMultiples
+		numCardsAtThisStep := calculateNumberOfCardsAtThisStep(activeDuplications)
+		sum += numCardsAtThisStep
 
 		activeDuplications = decrementAndRemoveActiveDuplications(activeDuplications)
 
 		matches := EvaluateGameMatches(game)
 		if matches > 0 {
-			activeDuplications = append(activeDuplications, ActiveDuplication{matches, currentMultiples}) 
+			activeDuplications = append(activeDuplications, ActiveDuplication{matches, numCardsAtThisStep}) 
 		}
 	}
 	
