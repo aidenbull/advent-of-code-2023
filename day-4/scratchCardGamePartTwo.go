@@ -6,7 +6,7 @@ import (
 )
 
 type ActiveDuplication struct {
-	RemainingQueueSize int
+	RemainingIterations int
 	NumberOfDuplicates int
 }
 
@@ -23,8 +23,8 @@ func calculateNumberOfCardsAtThisStep(activeDuplications []ActiveDuplication) in
 func decrementAndRemoveActiveDuplications(activeDuplications []ActiveDuplication) []ActiveDuplication {
 	nextActiveDuplications := make([]ActiveDuplication, 0)
 	for _, duplication := range activeDuplications {
-		duplication.RemainingQueueSize--
-		if duplication.RemainingQueueSize > 0 {
+		duplication.RemainingIterations--
+		if duplication.RemainingIterations > 0 {
 			nextActiveDuplications = append(nextActiveDuplications, duplication)
 		}
 	}
