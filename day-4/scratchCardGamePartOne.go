@@ -12,8 +12,6 @@ func PrintPartOneSolution(input string) {
 	for _, gameStr := range tokens {
 		game := ScratchGameFromString(gameStr)
 		sum += EvaluateGameMatches(game)
-
-		//fmt.Printf("Game: %+v, Value: %d\n", game, EvaluateGame(game))
 	}
 
 	fmt.Println(sum)
