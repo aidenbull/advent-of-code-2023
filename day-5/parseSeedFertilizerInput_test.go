@@ -15,3 +15,17 @@ func TestParseOutSeeds(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestParseOutSingleSetOfMappings(t *testing.T) {
+	input := "seed-to-soil map:\n4 5 2\n1 1 1"
+
+	expected := []Mapping{
+		{4, 5, 2},
+		{1, 1, 1},
+	}
+	result := ParseSetOfMappings(input)
+
+	if !cmp.Equal(expected, result) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
