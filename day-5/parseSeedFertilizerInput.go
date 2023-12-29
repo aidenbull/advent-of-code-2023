@@ -58,5 +58,14 @@ func ParseSetOfMappings(input string) MapSet {
 }
 
 func ParseSeedsAndMaps(input string) SeedsAndMaps {
-	return SeedsAndMaps{[]int{}, []MapSet{}}
+	majorComponentTokens := strings.Split(input, "\n\n")
+
+	seeds := ParseSeeds(majorComponentTokens[0])
+
+	mapSets := make([]MapSet, 0)
+	for _, mapSetStr := range majorComponentTokens[1:] {
+		mapSets = append(mapSets, ParseSetOfMappings(mapSetStr))
+	}
+
+	return SeedsAndMaps{seeds, mapSets}
 }
