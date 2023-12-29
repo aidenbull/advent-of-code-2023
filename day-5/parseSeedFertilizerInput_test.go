@@ -95,3 +95,22 @@ func TestApplyMapToInputWhenNoMatch(t *testing.T) {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
+
+func TestApplyMultipleMapsToInput(t *testing.T) {
+	testInput := 1
+	testMapSets := []MapSet{
+		{[]FertilizerMap{
+			{10, 0, 5},
+		}},
+		{[]FertilizerMap{
+			{-10, 10, 2},
+		}},
+	}
+
+	expected := -9
+	result := ApplyMultipleMaps(testInput, testMapSets) 
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}

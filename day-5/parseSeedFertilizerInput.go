@@ -78,3 +78,7 @@ func ApplyMap(input int, mapSet MapSet) int {
 	}
 	return input
 }
+
+func ApplyMultipleMaps(input int, mapSets []MapSet) int {
+	return 0
+} 
