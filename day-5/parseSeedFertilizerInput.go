@@ -8,7 +8,7 @@ import (
 
 type FertilizerMap struct {
 	DestStart int
-	SourceStart int
+	SrcStart int
 	Length int
 }
 
@@ -68,4 +68,13 @@ func ParseSeedsAndMaps(input string) SeedsAndMaps {
 	}
 
 	return SeedsAndMaps{seeds, mapSets}
+}
+
+func ApplyMap(input int, mapSet MapSet) int {
+	for _, m := range mapSet.Maps {
+		if input >= m.SrcStart && input < (m.SrcStart + m.Length) {
+			return input + (m.DestStart - m.SrcStart)
+		}
+	}
+	return input
 }
