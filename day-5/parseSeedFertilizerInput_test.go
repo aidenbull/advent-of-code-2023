@@ -81,3 +81,17 @@ func TestApplyMapToInput(t *testing.T) {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
+
+func TestApplyMapToInputWhenNoMatch(t *testing.T) {
+	testInput := 5
+	testMap := MapSet{[]FertilizerMap{
+		{10, 0, 5},
+	}}
+
+	expected := 5
+	result := ApplyMap(testInput, testMap)
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
