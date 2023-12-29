@@ -80,5 +80,11 @@ func ApplyMap(input int, mapSet MapSet) int {
 }
 
 func ApplyMultipleMaps(input int, mapSets []MapSet) int {
-	return 0
+	out := input
+	
+	for _, mapSet := range mapSets {
+		out = ApplyMap(out, mapSet)
+	}
+
+	return out
 } 
