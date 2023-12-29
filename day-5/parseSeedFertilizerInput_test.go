@@ -67,3 +67,17 @@ func TestParseOutSeedsAndMultipleMapSets(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestApplyMapToInput(t *testing.T) {
+	testInput := 1
+	testMap := MapSet{[]FertilizerMap{
+		{10, 0, 5},
+	}}
+
+	expected := 11
+	result := ApplyMap(testInput, testMap)
+
+	if expected != result {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
