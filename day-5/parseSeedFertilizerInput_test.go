@@ -31,3 +31,39 @@ func TestParseOutSingleSetOfMappings(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestParseOutSeedsAndMultipleMapSets(t *testing.T) {
+	input := "seeds: 4 1 3\n" + 
+	"\n" +
+	"seed-to-soil map:\n" +
+	"4 5 2\n" +
+	"1 1 1\n" + 
+	"\n" + 
+	"soil-to-fertilizer map:\n" +
+	"1 4 7\n" +
+	"1 9 3"
+
+	expectedSeeds := []int {4, 1, 3}
+	expectedMapSet1 := MapSet{[]FertilizerMap{
+		{4, 5, 2},
+		{1, 1, 1},
+	}}
+	expectedMapSet2 := MapSet{[]FertilizerMap{
+		{1, 4, 7},
+		{1, 9, 3},
+	}}
+
+	expected := SeedsAndMaps{
+		expectedSeeds,
+		[]MapSet {
+			expectedMapSet1,
+			expectedMapSet2,
+		},
+	}
+
+	result := ParseSeedsAndMaps(input)
+
+	if !cmp.Equal(expected, result) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}

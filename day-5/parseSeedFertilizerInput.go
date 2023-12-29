@@ -16,6 +16,11 @@ type MapSet struct {
 	Maps []FertilizerMap
 }
 
+type SeedsAndMaps struct {
+	Seeds []int
+	MapSets []MapSet
+}
+
 func ParseSeeds(input string) []int {
 	matchNumbers := regexp.MustCompile(`\d+`)
 	seedStrings := matchNumbers.FindAllString(input, -1)
@@ -50,4 +55,8 @@ func ParseSetOfMappings(input string) MapSet {
 	}
 
 	return MapSet{out}
+}
+
+func ParseSeedsAndMaps(input string) SeedsAndMaps {
+	return SeedsAndMaps{[]int{}, []MapSet{}}
 }
