@@ -39,7 +39,7 @@ func ParseSetOfMappings(input string) MapSet {
 	matchMappingPrefix := regexp.MustCompile(`^.+-to-.+ map:\n`)
 	prefix := matchMappingPrefix.FindString(input)
 	mapsStr := strings.TrimPrefix(input, prefix)
-	
+
 	maps := strings.Split(mapsStr, "\n")
 	out := make([]FertilizerMap, 0)
 
@@ -58,7 +58,8 @@ func ParseSetOfMappings(input string) MapSet {
 }
 
 func ParseSeedsAndMaps(input string) SeedsAndMaps {
-	majorComponentTokens := strings.Split(input, "\n\n")
+	preProcessedInput := strings.TrimSpace(input)
+	majorComponentTokens := strings.Split(preProcessedInput, "\n\n")
 
 	seeds := ParseSeeds(majorComponentTokens[0])
 
