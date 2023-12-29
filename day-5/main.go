@@ -7,4 +7,5 @@ import (
 func main() {
 	fileStr, _ := ioutil.ReadFile("input")
 	PrintPartOneSolution(string(fileStr))
+	PrintPartTwoSolution(string(fileStr))
 }
