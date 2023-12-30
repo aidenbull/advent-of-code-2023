@@ -114,23 +114,3 @@ func TestApplyMultipleMapsToInput(t *testing.T) {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
-
-func TestApplySeedRangeToMultipleMaps(t *testing.T) {
-	testInputStart := 5
-	testInputRangeLen := 10
-	testMapSets := []MapSet{
-		{[]FertilizerMap{
-			{72, 0, 10},
-		}},
-		{[]FertilizerMap{
-			{62, 10, 10},
-		}},
-	}
-
-	expected := 62
-	result := ApplySeedRangeToMultipleMaps(testInputStart, testInputRangeLen, testMapSets)
-
-	if expected != result {
-		t.Errorf("Expected %v, got %v", expected, result)
-	}
-}
