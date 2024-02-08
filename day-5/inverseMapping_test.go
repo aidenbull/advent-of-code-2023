@@ -22,3 +22,21 @@ func TestCreateInverseMappingForSingleMapping(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestCreateInverseMappingForMultipleMappings(t *testing.T) {
+	input := []FertilizerMap{
+		{4, 5, 2},
+		{10, 20, 5},
+	}
+
+	expected := []FertilizerMap{
+		{5, 4, 2},
+		{20, 10, 5},
+	}
+
+	result := InvertMapping(input)
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
