@@ -8,13 +8,13 @@ import (
 )
 
 func TestCreateInverseMappingForSingleMapping(t *testing.T) {
-	input := []FertilizerMap{
+	input := MapSet{[]FertilizerMap{
 		{4, 5, 2},
-	}
+	}}
 
-	expected := []FertilizerMap{
+	expected := MapSet{[]FertilizerMap{
 		{5, 4, 2},
-	}
+	}}
 
 	result := InvertMapping(input)
 
@@ -24,15 +24,15 @@ func TestCreateInverseMappingForSingleMapping(t *testing.T) {
 }
 
 func TestCreateInverseMappingForMultipleMappings(t *testing.T) {
-	input := []FertilizerMap{
+	input := MapSet{[]FertilizerMap{
 		{4, 5, 2},
 		{10, 20, 5},
-	}
+	}}
 
-	expected := []FertilizerMap{
+	expected := MapSet{[]FertilizerMap{
 		{5, 4, 2},
 		{20, 10, 5},
-	}
+	}}
 
 	result := InvertMapping(input)
 
