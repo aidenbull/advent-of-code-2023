@@ -64,3 +64,29 @@ func TestApplyingMappingsToSeedAndApplyingInverseGetsOriginalSeed(t *testing.T) 
 		t.Errorf("Expected %v, got %v", expected_output_backward, result_backward)
 	}
 }
+
+func TestCreateInverseOfMultipleSetsOfMappings (t *testing.T) {
+	input := []MapSet{
+		{[]FertilizerMap{
+			{4, 5, 2},
+		}},
+		{[]FertilizerMap{
+			{10, 20, 5},
+		}},
+	}
+
+	expected := []MapSet{
+		{[]FertilizerMap{
+			{20, 10, 5},
+		}},
+		{[]FertilizerMap{
+			{5, 4, 2},
+		}},
+	}
+
+	result := InvertMultipleMapSets(input)
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
