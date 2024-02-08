@@ -11,3 +11,16 @@ func InvertMapping(input MapSet) MapSet {
 	}
 	return MapSet{out}
 }
+
+func InvertMultipleMapSets(input []MapSet) []MapSet {
+	//Reverse Input
+	for i, j := 0, len(input)-1; i < j; i, j = i+1, j-1 {
+		input[i], input[j] = input[j], input[i]
+	}
+	
+	out := make([]MapSet, 0)
+	for _, mapSet := range(input) {
+		out = append(out, InvertMapping(mapSet))
+	}
+	return out
+}
