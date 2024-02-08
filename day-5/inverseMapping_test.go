@@ -1,0 +1,24 @@
+//Tests for helping with part 2
+
+package main
+
+import (
+	"testing"
+	"github.com/google/go-cmp/cmp"
+)
+
+func TestCreateInverseMappingForSingleMapping(t *testing.T) {
+	input := []FertilizerMap{
+		{4, 5, 2},
+	}
+
+	expected := []FertilizerMap{
+		{5, 4, 2},
+	}
+
+	result := InvertMapping(input)
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
