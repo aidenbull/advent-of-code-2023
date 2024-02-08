@@ -16,7 +16,7 @@ func TestCreateInverseMappingForSingleMapping(t *testing.T) {
 		{5, 4, 2},
 	}}
 
-	result := InvertMapping(input)
+	result := InvertMapSet(input)
 
 	if (!cmp.Equal(expected, result)) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
@@ -34,7 +34,7 @@ func TestCreateInverseMappingForMultipleMappings(t *testing.T) {
 		{20, 10, 5},
 	}}
 
-	result := InvertMapping(input)
+	result := InvertMapSet(input)
 
 	if (!cmp.Equal(expected, result)) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
@@ -55,7 +55,7 @@ func TestApplyingMappingsToSeedAndApplyingInverseGetsOriginalSeed(t *testing.T) 
 	}
 
 	input_seed_backward := 4
-	inverse_mapping := InvertMapping(input_mapping)
+	inverse_mapping := InvertMapSet(input_mapping)
 	expected_output_backward := 5
 
 	result_backward := ApplyMap(input_seed_backward, inverse_mapping)

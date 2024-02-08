@@ -1,6 +1,6 @@
 package main
 
-func InvertMapping(input MapSet) MapSet {
+func InvertMapSet(input MapSet) MapSet {
 	out := make([]FertilizerMap, 0)
 	for _, m := range(input.Maps) {
 		out = append(out, FertilizerMap{
@@ -20,7 +20,7 @@ func InvertMultipleMapSets(input []MapSet) []MapSet {
 	
 	out := make([]MapSet, 0)
 	for _, mapSet := range(input) {
-		out = append(out, InvertMapping(mapSet))
+		out = append(out, InvertMapSet(mapSet))
 	}
 	return out
 }
