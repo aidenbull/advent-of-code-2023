@@ -40,3 +40,27 @@ func TestCreateInverseMappingForMultipleMappings(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestApplyingMappingsToSeedAndApplyingInverseGetsOriginalSeed(t *testing.T) {
+	input_seed_forward := 5
+	input_mapping := MapSet{[]FertilizerMap{
+		{4, 5, 2},
+	}}
+	expected_output_forward := 4
+
+	result_forward := ApplyMap(input_seed_forward, input_mapping)
+
+	if (result_forward != expected_output_forward) {
+		t.Errorf("Expected %v, got %v", expected_output_forward, result_forward)
+	}
+
+	input_seed_backward := 4
+	inverse_mapping := InvertMapping(input_mapping)
+	expected_output_backward := 5
+
+	result_backward := ApplyMap(input_seed_backward, inverse_mapping)
+
+	if (result_backward != expected_output_backward) {
+		t.Errorf("Expected %v, got %v", expected_output_backward, result_backward)
+	}
+}
