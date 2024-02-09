@@ -12,8 +12,7 @@ func TestConvertInputRangeToOutputRangeForSingleMap(t *testing.T) {
 	}}
 
 	expected := []SeedRange{
-		{3, 4},
-		{4, 6},
+		{3, 6},
 		{7, 9},
 	}
 
