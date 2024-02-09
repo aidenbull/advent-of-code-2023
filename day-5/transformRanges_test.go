@@ -22,3 +22,19 @@ func TestConvertInputRangeToOutputRangeForSingleMap(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestInsertAndMergeSuccessfullyMergesTwoRanges(t *testing.T) {
+	input_new_range := SeedRange{5, 9}
+	input_existing_ranges := []SeedRange{
+		{7, 13},
+	}
+
+	expected := []SeedRange{
+		{5, 13},
+	}
+	result := InsertAndMergeRange(input_new_range, input_existing_ranges)
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
