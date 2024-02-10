@@ -1,5 +1,6 @@
 package main
 
+//Start is inclusive, End is exclusive
 type SeedRange struct {
 	Start int;
 	End int;
