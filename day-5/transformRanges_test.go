@@ -146,3 +146,22 @@ func TestInsertAndMergeRangeWhenNoIntersectButStillMergable(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestProcessPartTwoSeeds(t *testing.T) {
+	input := []int {
+		10, 5,
+		20, 6,
+		0, 2,
+	}
+	
+	expected := []SeedRange{
+		{10, 15},
+		{20, 26},
+		{0, 2},
+	}
+	result := ProcessPartTwoSeeds(input)
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}

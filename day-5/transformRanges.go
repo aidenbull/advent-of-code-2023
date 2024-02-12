@@ -123,3 +123,12 @@ func InsertAndMergeRange(new_range SeedRange, existing_ranges []SeedRange) []See
 	}
 	return append(existing_ranges, new_range)
 }
+
+func ProcessPartTwoSeeds(input_seeds []int) []SeedRange {
+	out := make([]SeedRange, 0)
+	for i := 0; i < len(input_seeds); i += 2 {
+		range_start := input_seeds[i]
+		out = append(out, SeedRange{range_start, range_start + input_seeds[i+1]})
+	}
+	return out
+}
