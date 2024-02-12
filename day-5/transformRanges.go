@@ -18,6 +18,10 @@ func rangeIntersect(r1, r2 SeedRange) SeedRange {
 	return SeedRange{max(r1.Start, r2.Start), min(r1.End, r2.End)}
 }
 
+func getInputRange(mapping FertilizerMap) SeedRange {
+	return SeedRange{mapping.SrcStart, mapping.SrcStart + mapping.Length}
+}
+
 //Makes no guarantee about order of output
 func getOutputRangesRecursive(seeds SeedRange, mapSet MapSet, curr_ranges []SeedRange) []SeedRange {
 	if seeds.Start == seeds.End {
@@ -26,7 +30,7 @@ func getOutputRangesRecursive(seeds SeedRange, mapSet MapSet, curr_ranges []Seed
 
 	for i := 0; i<len(mapSet.Maps); i++ {
 		curr_map := mapSet.Maps[i]
-		curr_map_input_range := SeedRange{curr_map.SrcStart, curr_map.SrcStart + curr_map.Length}
+		curr_map_input_range := getInputRange(curr_map)
 		if (rangesOverlap(seeds, curr_map_input_range)) {
 			//Intersect of overlap
 			intersect := rangeIntersect(seeds, curr_map_input_range)
