@@ -1,5 +1,9 @@
 package main
 
+import (
+	"sort"
+)
+
 //Start is inclusive, End is exclusive
 type SeedRange struct {
 	Start int;
@@ -14,6 +18,7 @@ func rangeIntersect(r1, r2 SeedRange) SeedRange {
 	return SeedRange{max(r1.Start, r2.Start), min(r1.End, r2.End)}
 }
 
+//Makes no guarantee about order of output
 func getOutputRangesRecursive(seeds SeedRange, mapSet MapSet, curr_ranges []SeedRange) []SeedRange {
 	if seeds.Start == seeds.End {
 		return curr_ranges
@@ -58,6 +63,13 @@ func getOutputRangesRecursive(seeds SeedRange, mapSet MapSet, curr_ranges []Seed
 
 func GetOutputRanges(seeds SeedRange, mapSet MapSet) []SeedRange {
 	return getOutputRangesRecursive(seeds, mapSet, []SeedRange{})
+}
+
+func SortRangesByIncreasingStart(ranges []SeedRange) []SeedRange {
+	sort.Slice(ranges, func(i, j int) bool {
+		return ranges[i].Start < ranges[j].Start
+	})
+	return ranges
 }
 
 func min(x, y int) int {

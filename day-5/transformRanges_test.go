@@ -23,6 +23,28 @@ func TestConvertInputRangeToOutputRangeForSingleMap(t *testing.T) {
 	}
 }
 
+func TestConvertRangeWithTwoDistinctMappingsToCreateFiveRanges(t *testing.T) {
+	input_seed_range := SeedRange{0, 100}
+	input_mappings := MapSet{[]FertilizerMap{
+		{120, 20, 20},
+		{160, 60, 20},
+	}}
+
+	expected := []SeedRange{
+		{0, 20},
+		{40, 60},
+		{80, 100},
+		{120, 140},
+		{160, 180},
+	}
+
+	result := SortRangesByIncreasingStart(GetOutputRanges(input_seed_range, input_mappings))
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
+
 func TestInsertAndMergeSuccessfullyMergesTwoRanges(t *testing.T) {
 	input_new_range := SeedRange{5, 9}
 	input_existing_ranges := []SeedRange{
