@@ -70,6 +70,35 @@ func TestConvertRangeWhenMappingsAndInputMeetAtRangeBorders(t *testing.T) {
 	}
 }
 
+func TestConvertMultipleInputRangesToOutputRanges(t *testing.T) {
+	input_ranges := []SeedRange{
+		{0, 50},
+		{50, 100},
+	}
+	input_mappings := MapSet{[]FertilizerMap{
+		{120, 20, 20},
+		{160, 60, 20},
+	}}
+
+	expected := []SeedRange{
+		{0, 20},
+		{40, 60},
+		{80, 100},
+		{120, 140},
+		{160, 180},
+	}
+
+	result := SortRangesByIncreasingStart(
+		TransformInputRangesToOutputRanges(
+			input_ranges, 
+			input_mappings,
+		))
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
+
 func TestInsertAndMergeSuccessfullyMergesTwoRanges(t *testing.T) {
 	input_new_range := SeedRange{5, 9}
 	input_existing_ranges := []SeedRange{
