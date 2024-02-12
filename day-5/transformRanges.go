@@ -98,18 +98,22 @@ func max(x, y int) int {
 	return y
 }
 
+func rangesMatchAtBorder(r1, r2 SeedRange) bool {
+	return r1.Start == r2.End || r2.Start == r1.End
+}
+
 func rangesOverlap(r1, r2 SeedRange) bool {
 	return r1.Start < r2.End && r2.Start < r1.End
 }
 
-func rangeUnion(r1, r2 SeedRange) SeedRange {
+func combineOverlappingRanges(r1, r2 SeedRange) SeedRange {
 	return SeedRange{min(r1.Start, r2.Start), max(r1.End, r2.End)}
 }
 
 func InsertAndMergeRange(new_range SeedRange, existing_ranges []SeedRange) []SeedRange {
 	for i := 0; i<len(existing_ranges); i++ {
-		if rangesOverlap(new_range, existing_ranges[i]){
-			merged_range := rangeUnion(new_range, existing_ranges[i])
+		if rangesOverlap(new_range, existing_ranges[i]) || rangesMatchAtBorder(new_range, existing_ranges[i]){
+			merged_range := combineOverlappingRanges(new_range, existing_ranges[i])
 			existing_ranges[i] = existing_ranges[len(existing_ranges)-1]
 			return InsertAndMergeRange(
 				merged_range, 
