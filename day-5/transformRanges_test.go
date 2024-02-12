@@ -131,3 +131,19 @@ func TestInsertAndMergeRangeWorksWhenTwoMergesWouldOccur(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expected, result)
 	}
 }
+
+func TestInsertAndMergeRangeWhenNoIntersectButStillMergable(t *testing.T) {
+	input_new_range := SeedRange{0, 5}
+	input_existing_ranges := []SeedRange{
+		{5, 10},
+	}
+
+	expected := []SeedRange{
+		{0, 10},
+	}
+	result := InsertAndMergeRange(input_new_range, input_existing_ranges)
+
+	if (!cmp.Equal(expected, result)) {
+		t.Errorf("Expected %+v, got %+v", expected, result)
+	}
+}
