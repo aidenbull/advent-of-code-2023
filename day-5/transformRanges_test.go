@@ -58,8 +58,7 @@ func TestConvertRangeWhenMappingsAndInputMeetAtRangeBorders(t *testing.T) {
 		{20, 30},
 		{70, 80},
 		{100, 120},
-		{130, 150},
-		{150, 170},
+		{130, 170},
 		{180, 200},
 	}
 
