@@ -76,6 +76,14 @@ func SortRangesByIncreasingStart(ranges []SeedRange) []SeedRange {
 	return ranges
 }
 
+func TransformInputRangesToOutputRanges(ranges []SeedRange, mapSet MapSet) []SeedRange {
+	output_range := make([]SeedRange, 0)
+	for _, r := range(ranges) {
+		output_range = getOutputRangesRecursive(r, mapSet, output_range)
+	}
+	return output_range
+}
+
 func min(x, y int) int {
 	if x < y {
 		return x
